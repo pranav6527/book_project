@@ -1,7 +1,3 @@
 package com.pranav.book_project.service;
 
-public class AuhenticationService {
-  
-  
-
-}
+public class AuhenticationService {}

@@ -18,4 +18,5 @@ public class Book {
   @Id @GeneratedValue private Long id;
   private String book_name;
   private int price;
+  private String author;
 }
