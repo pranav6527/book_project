@@ -11,8 +11,8 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  getAllBooks():Observable<Book>
+  getAllBooks():Observable<Book[]>
   {
-    return this.http.get<Book>(this.baseUrl+"/all-books");
+    return this.http.get<Book[]>(this.baseUrl+"/all-books");
   }
 }

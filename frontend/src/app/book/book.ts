@@ -1,6 +1,7 @@
-export class Book {
-    id:number;
-    bookname:string;
-    price:number
-    
+export interface Book {
+    id: number;
+    book_name: string;
+    price: number
+
+
 }
