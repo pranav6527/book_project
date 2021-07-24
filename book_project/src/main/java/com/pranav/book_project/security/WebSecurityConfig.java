@@ -1,3 +1,4 @@
+/*
 package com.pranav.book_project.security;
 
 import com.pranav.book_project.security.jwt.AuthEntryPointJwt;
@@ -63,3 +64,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 }
+*/

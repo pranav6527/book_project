@@ -1,3 +1,4 @@
+/*
 package com.pranav.book_project.security.jwt;
 
 import java.io.IOException;
@@ -23,3 +24,4 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 	}
 
 }
+*/

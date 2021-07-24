@@ -35,16 +35,16 @@
       <optional>true</optional>
       <scope>runtime</scope>
     </dependency>
-    <dependency>
+    <!--<dependency>
       <artifactId>spring-boot-starter-security</artifactId>
       <groupId>org.springframework.boot</groupId>
-    </dependency>
+    </dependency>-->
     <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
-    <dependency>
+    <!--<dependency>
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt</artifactId>
       <version>0.9.1</version>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>

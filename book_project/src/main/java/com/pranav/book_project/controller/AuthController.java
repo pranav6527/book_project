@@ -1,3 +1,4 @@
+/*
 package com.pranav.book_project.controller;
 
 
@@ -34,8 +35,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-	@Autowired
-	AuthenticationManager authenticationManager;
+*/
+/*	@Autowired
+	AuthenticationManager authenticationManager;*//*
+
 
 	@Autowired
 	UserRepository userRepository;
@@ -125,3 +128,4 @@ public class AuthController {
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
 }
+*/

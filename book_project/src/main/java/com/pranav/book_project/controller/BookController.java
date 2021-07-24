@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,14 +33,14 @@ public class BookController {
   }
 
   @PostMapping("/save-book")
-  @PreAuthorize("hasRole('ADMIN')")
+  //@PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<Book> saveBook(@RequestBody Book book) {
     Book savedBook = bookService.saveBook(book);
     return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
   }
 
   @PostMapping("/upload-books")
-  @PreAuthorize("hasRole('ADMIN')")
+//  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
     String message = "";
 

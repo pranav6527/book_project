@@ -1,3 +1,4 @@
+/*
 package com.pranav.book_project.security.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -99,3 +100,4 @@ public class UserDetailsImpl implements UserDetails {
 		return Objects.equals(id, user.id);
 	}
 }
+*/
