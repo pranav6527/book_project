@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <form class="col-4" [formGroup]="addBookForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="form-group my-1">
+          <label class="text-primary" for="name">Name</label>
+          <input type="text" class="form-control my-1" formControlName="name" id="name" aria-describedby="name">
+        </div>
+        <div class="form-group my-1">
+            <label class="text-primary" for="author">Author</label>
+            <input type="text" class="form-control my-1"  formControlName="author" id="author" aria-describedby="author">
+          </div>
+          <div class="form-group my-1">
+            <label class="text-primary" for="price">Price</label>
+            <input type="text" class="form-control my-1"   formControlName="price" id="price" aria-describedby="price">
+          </div>
+          <div class="text-center">
+        <button type="submit"  [disabled]="!addBookForm.valid"  class="btn btn-primary text-center mt-2">Submit</button>
+      </div>
+      </form>
+    </div>
+</div>

@@ -4,7 +4,9 @@ import com.pranav.book_project.entity.Book;
 import com.pranav.book_project.repository.BookRepository;
 import com.pranav.book_project.util.helper.ExcelHelper;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +17,10 @@ public class BookService {
   @Autowired private BookRepository bookRepository;
 
   public List<Book> getAllBooks() {
-    return bookRepository.findAll();
+
+    return bookRepository.findAll().stream().sorted((Comparator
+        .comparing(Book::getBook_name))).collect(
+        Collectors.toList());
   }
 
   public Book saveBook(Book book) {
