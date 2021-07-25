@@ -2,16 +2,19 @@ package com.pranav.book_project.controller;
 
 import com.pranav.book_project.dto.ResponseMessage;
 import com.pranav.book_project.entity.Book;
+import com.pranav.book_project.exception.BookNotFoundException;
 import com.pranav.book_project.service.BookService;
 //import com.pranav.book_project.util.helper.ExcelHelper;
 import com.pranav.book_project.util.helper.ExcelHelper;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,5 +72,19 @@ public class BookController {
     }
     message = "Please upload an excel file!";
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
+  }
+
+  @GetMapping("/find-book/{name}")
+  public ResponseEntity<Book> getBookByName(@PathVariable("name") String name) throws BookNotFoundException
+  {
+     Optional<Book> book = bookService.findBookByName(name);
+     if(book.isPresent())
+     {
+       return ResponseEntity.status(HttpStatus.OK).body(book.get());
+     }
+     else
+     {
+        throw  new BookNotFoundException();
+     }
   }
 }

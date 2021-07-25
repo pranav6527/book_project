@@ -6,6 +6,7 @@ import com.pranav.book_project.util.helper.ExcelHelper;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,9 @@ public class BookService {
     } catch (IOException e) {
       throw new RuntimeException("fail to store excel data: " + e.getMessage());
     }
+  }
+
+  public Optional<Book> findBookByName(String name) {
+    return bookRepository.findByBook_name(name);
   }
 }
