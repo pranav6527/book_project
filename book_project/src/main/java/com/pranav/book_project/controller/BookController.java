@@ -34,9 +34,20 @@ public class BookController {
 
   @PostMapping("/save-book")
   //@PreAuthorize("hasRole('ADMIN')")
-  public ResponseEntity<Book> saveBook(@RequestBody Book book) {
-    Book savedBook = bookService.saveBook(book);
-    return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
+  public ResponseEntity<ResponseMessage> saveBook(@RequestBody Book book) {
+    String message = "";
+    if(null!=book) {
+      Book savedBook = bookService.saveBook(book);
+      message = "Book saved Successfully:";
+      return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseMessage(message));
+    }
+    else
+    {
+      message = "Unable to save Book";
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
+
+    }
+
   }
 
   @PostMapping("/upload-books")

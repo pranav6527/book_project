@@ -15,4 +15,9 @@ export class BookService {
   {
     return this.http.get<Book[]>(this.baseUrl+"/all-books");
   }
+
+  addBooks(book:Book):Observable<string>
+  {
+    return this.http.post<string>(this.baseUrl+"/save-book",book);
+  }
 }

@@ -18,8 +18,8 @@ public class BookService {
 
   public List<Book> getAllBooks() {
 
-    return bookRepository.findAll().stream().sorted((Comparator
-        .comparing(Book::getBook_name))).collect(
+    return bookRepository.findAll().stream().filter(book -> null!= book.getBook_name()).sorted((Comparator
+        .comparing(Book::getBook_name,String::compareToIgnoreCase))).collect(
         Collectors.toList());
   }
 

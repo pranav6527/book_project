@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justify-content-center mt-5">
-    <form class="col-4" [formGroup]="addBookForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <form class="col-4" [formGroup]="addBookForm" (ngSubmit)="onSubmit(addBookForm.value)" autocomplete="off">
         <div class="form-group my-1">
           <label class="text-primary" for="name">Name</label>
-          <input type="text" class="form-control my-1" formControlName="name" id="name" aria-describedby="name">
+          <input type="text" class="form-control my-1" formControlName="book_name" id="name" aria-describedby="name">
         </div>
         <div class="form-group my-1">
             <label class="text-primary" for="author">Author</label>
