@@ -12,9 +12,10 @@
 </div>
 </div> -->
 
-<div class="navbar navbar-expand-lg navbar-dark bg-success">
-    <div class="container-fluid">
+<div class="navbar navbar-expand-lg navbar-dark bg-success d-flex">
+    <div class="container-fluid"> 
       <div class="navbar-brand" (click)="redirectToHome()">Book Project</div>
+      <input class="form-control w-25 flex-center" type="search"  (keyup)="handleInput($event)" placeholder="Search" aria-label="Search">
       <button
         class="navbar-toggler"
         type="button"

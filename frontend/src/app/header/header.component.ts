@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  search:string;
+ 
+  constructor(private router:Router,bookService:BookService) { }
 
   ngOnInit(): void {
+   
   }
 
+  handleInput(event: KeyboardEvent) { 
+    this.search = event.key;
+    console.log(this.search);
+    
+  }
   redirectToHome()
   {
     this.router.navigate(['']);
