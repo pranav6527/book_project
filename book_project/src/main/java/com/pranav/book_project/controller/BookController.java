@@ -4,14 +4,19 @@ import com.pranav.book_project.dto.ResponseMessage;
 import com.pranav.book_project.entity.Book;
 import com.pranav.book_project.exception.BookNotFoundException;
 import com.pranav.book_project.service.BookService;
-//import com.pranav.book_project.util.helper.ExcelHelper;
 import com.pranav.book_project.util.helper.ExcelHelper;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,13 +44,11 @@ public class BookController {
   //@PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<ResponseMessage> saveBook(@RequestBody Book book) {
     String message = "";
-    if(null!=book) {
+    if (null != book) {
       Book savedBook = bookService.saveBook(book);
       message = "Book saved Successfully:";
       return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseMessage(message));
-    }
-    else
-    {
+    } else {
       message = "Unable to save Book";
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
 
@@ -75,16 +78,42 @@ public class BookController {
   }
 
   @GetMapping("/find-book/{name}")
-  public ResponseEntity<Book> getBookByName(@PathVariable("name") String name) throws BookNotFoundException
-  {
-     Optional<Book> book = bookService.findBookByName(name);
-     if(book.isPresent())
-     {
-       return ResponseEntity.status(HttpStatus.OK).body(book.get());
-     }
-     else
-     {
-        throw  new BookNotFoundException();
-     }
+  public ResponseEntity<Book> getBookByName(@PathVariable("name") String name)
+      throws BookNotFoundException {
+    Optional<Book> book = bookService.findBookByName(name);
+    if (book.isPresent()) {
+      return ResponseEntity.status(HttpStatus.OK).body(book.get());
+    } else {
+      throw new BookNotFoundException();
+    }
+  }
+
+  @GetMapping("/book-by-page")
+  public ResponseEntity<Map<String, Object>> getBooksByPage(
+      @RequestParam(required = false) String title,
+        @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "3") int size
+  ) {
+    try {
+
+      List<Book> books = new ArrayList<>();
+      Pageable pagingSort = PageRequest.of(page, size, Sort.unsorted());
+      Page<Book> pageBook;
+
+      pageBook = bookService.findAll(pagingSort);
+
+      books = pageBook.getContent();
+
+      Map<String, Object> response = new HashMap<>();
+      response.put("books", books);
+      response.put("currentPage", pageBook.getNumber());
+      response.put("totalItems", pageBook.getTotalElements());
+      response.put("totalPages", pageBook.getTotalPages());
+
+      return new ResponseEntity<>(response, HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
   }
 }

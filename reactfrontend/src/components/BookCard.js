@@ -17,7 +17,7 @@ const BookCard = ({ data }) => {
         </Card.Body>
         <Card.Body className="d-flex justify-content-between">
           <Button variant="primary">
-           Price : <i class="fa fa-inr">&nbsp;{data.price}</i>
+           Price : <i className="fa fa-inr">&nbsp;{data.price}</i>
            
           </Button>
           <Button variant="success">

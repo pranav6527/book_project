@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class BookService {
 
   @Autowired private BookRepository bookRepository;
+
+  public  Page<Book> findAll(Pageable pagingSort) {
+    return  bookRepository.findAll(pagingSort);
+  }
 
   public List<Book> getAllBooks() {
 
