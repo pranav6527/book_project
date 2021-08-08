@@ -8,7 +8,7 @@ const BookCard = ({ data }) => {
       <Card className="m-2" style={{ width: "18rem" }}>
         <Card.Img variant="top" src={book} />
         <Card.Body>
-          <Card.Title >{data.book_name}</Card.Title>
+          <Card.Title >{data.name}</Card.Title>
           <blockquote className="d-flex justify-content-end blockquote">
             <footer className="blockquote-footer ">
                <cite title="Source Title">{data.author}</cite>

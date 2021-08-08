@@ -23,7 +23,7 @@ function App() {
   };
 
   const capture = (e) => {
-    setPage(e.target.outerText);
+    setPage(e.target.outerText -1);
     console.log(e.target.outerText);
   };
   useEffect(

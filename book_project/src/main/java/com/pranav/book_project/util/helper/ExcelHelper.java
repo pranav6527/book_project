@@ -94,7 +94,7 @@ public class ExcelHelper {
             break;
 
           case 1:
-            book.setBook_name(currentCell.getStringCellValue());
+            book.setName(currentCell.getStringCellValue());
             break;
 
           case 2:

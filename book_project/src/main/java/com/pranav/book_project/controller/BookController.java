@@ -10,11 +10,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
+@Slf4j
 @RequestMapping("/book")
 public class BookController {
 
@@ -97,7 +100,7 @@ public class BookController {
     try {
 
       List<Book> books = new ArrayList<>();
-      Pageable pagingSort = PageRequest.of(page, size, Sort.unsorted());
+      Pageable pagingSort = PageRequest.of(page, size, Sort.by("name"));
       Page<Book> pageBook;
 
       pageBook = bookService.findAll(pagingSort);
@@ -112,6 +115,7 @@ public class BookController {
 
       return new ResponseEntity<>(response, HttpStatus.OK);
     } catch (Exception e) {
+      log.error(e.getMessage());
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

@@ -1,5 +1,6 @@
 package com.pranav.book_project.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,8 @@ import lombok.ToString;
 public class Book {
 
   @Id @GeneratedValue private Long id;
-  private String book_name;
+  @Column(name = "book_name")
+  private String name;
   private int price;
   private String author;
 
