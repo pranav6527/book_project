@@ -1,4 +1,4 @@
-package com.pranav.book_project.entity;
+package com.pranav.book_project.constants;
 
 public enum ERole {
 	ROLE_USER,

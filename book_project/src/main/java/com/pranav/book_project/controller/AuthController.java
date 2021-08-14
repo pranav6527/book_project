@@ -2,7 +2,7 @@
 package com.pranav.book_project.controller;
 
 
-import com.pranav.book_project.entity.ERole;
+import com.pranav.book_project.constants.ERole;
 import com.pranav.book_project.entity.Role;
 import com.pranav.book_project.entity.User;
 import com.pranav.book_project.payload.request.LoginRequest;

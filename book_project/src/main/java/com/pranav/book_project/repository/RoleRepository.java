@@ -1,7 +1,7 @@
 package com.pranav.book_project.repository;
 
 
-import com.pranav.book_project.entity.ERole;
+import com.pranav.book_project.constants.ERole;
 import com.pranav.book_project.entity.Role;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;

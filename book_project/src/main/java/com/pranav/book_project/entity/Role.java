@@ -1,5 +1,6 @@
 package com.pranav.book_project.entity;
 
+import com.pranav.book_project.constants.ERole;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
